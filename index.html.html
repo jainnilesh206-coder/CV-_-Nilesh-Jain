@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nilesh Jain | RF Optimizer & AI/ML Practitioner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #0b1220;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --chip-bg: #111827;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #1f2937 0, var(--bg) 45%, var(--bg-alt) 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 32px 16px;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow:
+        0 24px 80px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,0.9);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 55%);
+    }
+    @media (max-width: 720px) {
+      header { padding: 22px 18px 18px; }
+      .profile-main { flex-direction: column; align-items: flex-start; }
+    }
+    .profile-main {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex: 2.2;
+      min-width: 260px;
+    }
+    .avatar-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 36px;
+      background: radial-gradient(circle at 10% 0, rgba(56,189,248,0.28), rgba(129,140,248,0.16));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.45);
+      box-shadow:
+        0 16px 48px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,0.9);
+    }
+    .avatar-wrap img {
+      width: 116px;
+      height: 116px;
+      object-fit: cover;
+      border-radius: 32px;
+    }
+    .avatar-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid rgba(56,189,248,0.3);
+      pointer-events: none;
+    }
+    .profile-text h1 {
+      font-size: 1.8rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+    }
+    .headline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .chip {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid rgba(148,163,184,0.35);
+      color: var(--text-muted);
+    }
+    .chip-accent {
+      border-color: rgba(56,189,248,0.7);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .contact-block {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      justify-content: center;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-label {
+      width: 70px;
+      color: #64748b;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .contact-value a {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .contact-value a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
+      gap: 24px;
+      padding: 22px 28px 26px;
+    }
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: minmax(0,1fr);
+        padding: 18px 18px 22px;
+      }
+    }
+    section + section { margin-top: 18px; }
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+    .section-title span {
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+      padding-bottom: 3px;
+    }
+    .summary {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.08), rgba(15,23,42,0.96));
+      border-radius: 14px;
+      padding: 14px 16px 12px;
+      border: 1px solid rgba(148,163,184,0.2);
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .pill {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.28);
+      color: var(--text-muted);
+    }
+    .timeline-item {
+      background: rgba(15,23,42,0.96);
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(55,65,81,0.8);
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .role {
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+    .company {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .meta {
+      font-size: 0.76rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .timeline-body {
+      margin-top: 6px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-body ul {
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+    .timeline-body li { margin-bottom: 2px; }
+    .skill-group {
+      background: rgba(15,23,42,0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(55,65,81,0.8);
+      padding: 9px 10px 8px;
+      margin-bottom: 8px;
+      font-size: 0.86rem;
+    }
+    .skill-group-title {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .skill-tag {
+      font-size: 0.76rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(148,163,184,0.45);
+      color: var(--text-main);
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 8px;
+    }
+    .cert-card {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(15,23,42,0.98);
+      border-radius: 11px;
+      border: 1px solid rgba(55,65,81,0.8);
+      padding: 8px 9px;
+      font-size: 0.84rem;
+    }
+    .cert-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      flex-shrink: 0;
+      background: radial-gradient(circle at 10% 0, rgba(56,189,248,0.45), rgba(15,23,42,0.96));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.55);
+    }
+    .cert-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cert-info-title {
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+    .cert-provider {
+      font-size: 0.76rem;
+      color: #9ca3af;
+    }
+    .cert-meta {
+      font-size: 0.76rem;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+    .learning-list {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .learning-list li {
+      margin-left: 16px;
+      margin-bottom: 2px;
+    }
+    .achievements-list {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      background: rgba(15,23,42,0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(55,65,81,0.8);
+      padding: 10px 12px 8px;
+    }
+    .achievements-list ul {
+      padding-left: 16px;
+    }
+    .achievements-list li { margin-bottom: 3px; }
+    footer {
+      padding: 10px 24px 16px;
+      border-top: 1px solid rgba(148,163,184,0.25);
+      font-size: 0.76rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="profile-main">
+        <div class="avatar-wrap">
+          <!-- Replace with your photo: put the image file in /images and update the path -->
+          <img src="images/profile.jpg" alt="Nilesh Jain" />
+          <div class="avatar-ring"></div>
+        </div>
+        <div class="profile-text">
+          <h1>Nilesh Jain</h1>
+          <div class="headline">
+            Radio Network Optimizer · RF Data Analyst · AI/ML Practitioner (Pursuing)
+          </div>
+          <div class="chips">
+            <span class="chip chip-accent">5G / LTE / VoLTE / WCDMA / GSM</span>
+            <span class="chip">RF Optimization & KPI Analysis</span>
+            <span class="chip">Automation & Python Tools</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-row">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Gurugram, Haryana, India</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">
+            <a href="mailto:jain.nilesh206@gmail.com">jain.nilesh206@gmail.com</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+91-9685445855</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">
+            <a href="https://github.com/jain.nilesh206-coder" target="_blank">
+              github.com/jain.nilesh206-coder
+            </a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">
+            <a href="https://www.linkedin.com/in/nilesh-jain-79263597" target="_blank">
+              linkedin.com/in/nilesh-jain-79263597
+            </a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN: Summary + Experience -->
+      <div>
+        <section>
+          <h2 class="section-title"><span>Profile Summary</span></h2>
+          <div class="summary">
+            Telecom SME with 17+ years of experience in 5G, LTE, VoLTE, WCDMA, and GSM, specializing in RF optimization, KPI analysis, and network quality improvement across multi-vendor networks.
+            Proven track record in KPI acceptance for deployment projects, worst-cell improvement, and parameter-level tuning for mobility, coverage, and quality.
+            Strong experience in drive test analysis, customer complaint resolution, and business stakeholder interaction, supported by Python, Power BI, and Excel-based storytelling.
+            <div class="pill-row">
+              <span class="pill">RF planning & optimization</span>
+              <span class="pill">KPI analysis & acceptance</span>
+              <span class="pill">Drive test analysis & reporting</span>
+              <span class="pill">Python, Power BI, Excel</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title"><span>Professional Experience</span></h2>
+
+          <!-- Latest Role: SME – 5G -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Subject Matter Expert – 5G</div>
+                <div class="company">Vedang Cellular Services Pvt. Ltd. · Client: Bharti Airtel</div>
+              </div>
+              <div class="meta">Oct 2025 – Present · Gurugram</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Work on 5G performance AT acceptance, observations, and improvement for MP/UPE/GUJ circles.</li>
+                <li>Perform KPI performance checks and acceptance for small cell, relocation, new site, and capacity upgrade projects.</li>
+                <li>Analyze LTE KPIs (Accessibility, Retainability, Integrity, Mobility) and drive corrective actions to meet acceptance criteria.</li>
+                <li>Prepare KPI exclusions and lead technical discussions with customers on justifications and closure plans.</li>
+                <li>Optimize VoLTE KPIs (Accessibility, Retainability) and features including LMS, IFHO, IFLB, CSFB, SRVCC, IRAT, latency, and packet loss with parameter-level expertise.</li>
+                <li>Interact with customer teams for RF and performance-related technical discussions and reviews.</li>
+                <li>Design KPI automation logic for Auto RCA tools, contributing 5G/LTE domain rules.</li>
+                <li>Use Python and Excel for data analytics to generate productive outcomes and performance insights.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Role: Manager – Network Operations and Support -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Manager – Network Operations and Support</div>
+                <div class="company">Tata Communications Transformation Services · Client: Bharti Airtel</div>
+              </div>
+              <div class="meta">Apr 2025 – Oct 2025 · Gurugram</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Handled operations across 5G, LTE, 3G, and 2G technologies for MP/UPE/GUJ project areas.</li>
+                <li>Owned KPI performance checks and acceptance for small cells, relocations, new sites, and capacity upgrades.</li>
+                <li>Executed LTE KPI analysis (Accessibility, Retainability, Integrity, Mobility) and drove optimization plans.</li>
+                <li>Prepared exclusions and represented them to customers in technical and acceptance forums.</li>
+                <li>Managed VoLTE KPIs and mobility/experience features (LMS, IFHO, IFLB, CSFB, SRVCC, IRAT, latency, packet loss) through parameter tuning.</li>
+                <li>Led technical discussions with customers on performance issues and optimization roadmaps.</li>
+                <li>Contributed to KPI automation and Auto RCA logic, using Power BI and Excel to produce data-driven insights.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Role: Senior Engineer – RF Optimization -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Senior Engineer – RF Optimization</div>
+                <div class="company">Mobile Comm India Pvt. Ltd. · Client: Bharti Airtel</div>
+              </div>
+              <div class="meta">Sep 2023 – Apr 2025 · Gurugram</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Worked on 5G / LTE / 3G / 2G technologies for MUM/UPE/CHN/ROTN projects.</li>
+                <li>Performed KPI performance checks and acceptance for small cells, relocations, new sites, and capacity upgrades.</li>
+                <li>Analyzed LTE KPIs (Accessibility, Retainability, Integrity, Mobility) and led improvement actions.</li>
+                <li>Prepared KPI exclusions and handled discussions with customers for closure.</li>
+                <li>Optimized VoLTE KPIs and features including LMS, IFHO, IFLB, CSFB, SRVCC, IRAT, latency, and packet loss at parameter level.</li>
+                <li>Engaged with customers for technical discussions on RF performance and optimization.</li>
+                <li>Developed KPI automation logic for Auto RCA tools and leveraged Power BI/Excel for analytics.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Earlier long-term role: CTEL -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Cluster Technical Engineering Lead (CTEL) – RF</div>
+                <div class="company">Ericsson Global India Ltd. · Client: Bharti Airtel MPCG</div>
+              </div>
+              <div class="meta">Jan 2017 – Aug 2023 · Indore</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Led LTE RF optimization for MPCG with daily KPI monitoring and worst-cell improvement.</li>
+                <li>Managed VoLTE KPIs and features such as LMS, IFHO, IFLB, CSFB, SRVCC, IRAT, latency, and packet loss, ensuring parameter-level control.</li>
+                <li>Conducted coverage and capacity audits based on KPIs and customer experience feedback.</li>
+                <li>Handled high-visibility events (VIP visits, international cricket matches, Bhagoriya festival) ensuring best possible customer experience.</li>
+                <li>Planned and optimized PCI for new sites, removed PCI confusion/collisions using ACD and Groundhog.</li>
+                <li>Tested and activated SON features across the network per requirements.</li>
+                <li>Monitored SC/NSC KPIs daily, handled MAPA monitoring, worst-cell and traffic dip analysis and rectification.</li>
+                <li>Managed customer complaints via multiple channels with minimal escalations.</li>
+                <li>Coordinated with Zonal Business Managers and Zonal Managers for Indore & Ratlam clusters.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Earlier RF Engineer roles (compressed) -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">RF Engineer – Airtel MPCG Projects</div>
+                <div class="company">Nokia / Metro Wireless / Vedang / Global Innovsource · Client: Bharti Airtel</div>
+              </div>
+              <div class="meta">Sep 2009 – Jan 2017 · Indore, Bilaspur & Pune</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Performed 2G/3G drive test processing and analysis, KPI monitoring, and optimization for existing and new launch towns.</li>
+                <li>Executed BCCH and hopping planning, neighbor planning and optimization, and network expansion activities.</li>
+                <li>Handled customer and corporate complaints and ensured KPI & traffic handling targets were met.</li>
+                <li>Planned and optimized in-building solutions (IDR/ODR/Micro BTS) and performed RF acceptance and site documentation.</li>
+                <li>Conducted microwave LOS surveys, RF surveys for new sites, and proposed new sites to close coverage gaps and capacity issues.</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <h2 class="section-title"><span>Achievements</span></h2>
+          <div class="achievements-list">
+            <ul>
+              <li>Awarded “Best CTEL” for consistently delivering KPI improvements and stable network performance in MPCG.</li>
+              <li>Achieved No.1 rank in BM drive on Indore SC and maintained Indore zone KPIs across 18 FI clusters.</li>
+              <li>Recognized twice as “Star of the Week” and twice with Indore zone performance excellence awards by CH and CTO.</li>
+              <li>Successfully handled VIP visits and IPL match traffic in Indore via proactive parameter and site optimization.</li>
+              <li>Maintained low customer escalations through proactive monitoring and close coordination with business and quality teams.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN: Skills + Certifications + Learning + Education -->
+      <aside>
+        <section>
+          <h2 class="section-title"><span>Skills</span></h2>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Telecom & RF</div>
+            <div class="skill-tags">
+              <span class="skill-tag">5G / LTE / VoLTE / GSM</span>
+              <span class="skill-tag">RF planning & optimization</span>
+              <span class="skill-tag">KPI analysis & acceptance</span>
+              <span class="skill-tag">Mobility & handover tuning</span>
+              <span class="skill-tag">Drive test analysis</span>
+              <span class="skill-tag">RF LOS survey</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Tools & Platforms</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Groundhog</span>
+              <span class="skill-tag">P3</span>
+              <span class="skill-tag">TEMS</span>
+              <span class="skill-tag">MapInfo</span>
+              <span class="skill-tag">AzenCoz</span>
+              <span class="skill-tag">Citrix</span>
+              <span class="skill-tag">ESPA</span>
+              <span class="skill-tag">MSDP</span>
+              <span class="skill-tag">NetAct</span>
+              <span class="skill-tag">ACD</span>
+              <span class="skill-tag">Optimizer</span>
+              <span class="skill-tag">CCMT</span>
+              <span class="skill-tag">MYCOM</span>
+              <span class="skill-tag">PT4 Tool</span>
+              <span class="skill-tag">MS Office</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Python (elementary)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Business & Soft Skills</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Stakeholder communication</span>
+              <span class="skill-tag">Zonal business coordination</span>
+              <span class="skill-tag">Customer complaint handling</span>
+              <span class="skill-tag">Presentation & storytelling</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title"><span>Certifications & Learning</span></h2>
+          <div class="cert-grid">
+            <!-- AI/ML Agentic AI (IIT Delhi) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aiml.png" alt="AI/ML Agentic AI Certification" />
+              </div>
+              <div>
+                <div class="cert-info-title">AI/ML Agentic AI Certification (Pursuing)</div>
+                <div class="cert-provider">IIT Delhi</div>
+                <div class="cert-meta">Focus: machine learning fundamentals and agentic AI use cases.</div>
+              </div>
+            </div>
+
+            <!-- Cloud Architect -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-cloud.png" alt="Cloud Architect Program" />
+              </div>
+              <div>
+                <div class="cert-info-title">Cloud Architect Program</div>
+                <div class="cert-provider">[Institute Name]</div>
+                <div class="cert-meta">Completed · Cloud architecture, services, and deployments.</div>
+              </div>
+            </div>
+
+            <!-- VoLTE LTE Training -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-volte.png" alt="VoLTE LTE Training" />
+              </div>
+              <div>
+                <div class="cert-info-title">VoLTE LTE Training (Parameters)</div>
+                <div class="cert-provider">Mumbai · 10–14 Dec 2018</div>
+                <div class="cert-meta">Deep dive into VoLTE/LTE parameters and optimization techniques.</div>
+              </div>
+            </div>
+
+            <!-- Developing Machine Learning Solutions (AWS) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aws-devml.png" alt="Developing Machine Learning Solutions (AWS)" />
+              </div>
+              <div>
+                <div class="cert-info-title">Developing Machine Learning Solutions</div>
+                <div class="cert-provider">AWS</div>
+                <div class="cert-meta">End-to-end ML lifecycle on AWS: data prep, training, deployment.</div>
+              </div>
+            </div>
+
+            <!-- Essentials of Prompt Engineering (AWS) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aws-prompt.png" alt="Essentials of Prompt Engineering (AWS)" />
+              </div>
+              <div>
+                <div class="cert-info-title">Essentials of Prompt Engineering</div>
+                <div class="cert-provider">AWS</div>
+                <div class="cert-meta">Designing effective prompts for foundation and large language models.</div>
+              </div>
+            </div>
+
+            <!-- Fundamentals of Machine Learning and AI (AWS) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aws-mlai.png" alt="Fundamentals of Machine Learning and AI (AWS)" />
+              </div>
+              <div>
+                <div class="cert-info-title">Fundamentals of Machine Learning and AI</div>
+                <div class="cert-provider">AWS</div>
+                <div class="cert-meta">Core ML/AI concepts and AWS AI/ML services.</div>
+              </div>
+            </div>
+
+            <!-- Generative AI Basics (Outskill) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-outskill-genai.png" alt="Generative AI Basics (Outskill)" />
+              </div>
+              <div>
+                <div class="cert-info-title">Generative AI Basics</div>
+                <div class="cert-provider">Outskill</div>
+                <div class="cert-meta">Introduction to generative models, applications, and limitations.</div>
+              </div>
+            </div>
+
+            <!-- Optimizing Foundation Models (AWS) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aws-optfm.png" alt="Optimizing Foundation Models (AWS)" />
+              </div>
+              <div>
+                <div class="cert-info-title">Optimizing Foundation Models</div>
+                <div class="cert-provider">AWS</div>
+                <div class="cert-meta">Tuning, evaluation, and efficiency patterns for foundation models.</div>
+              </div>
+            </div>
+
+            <!-- AWS AI Practitioner -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-aws-aipract.png" alt="AWS AI Practitioner" />
+              </div>
+              <div>
+                <div class="cert-info-title">AWS AI Practitioner</div>
+                <div class="cert-provider">AWS</div>
+                <div class="cert-meta">Overview of AWS AI/ML services and practical solution patterns.</div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="learning-list">
+            <li>Ongoing: AI/ML and agentic AI for telecom KPI prediction and anomaly detection.</li>
+            <li>Ongoing: Python and Power BI storytelling for RF and KPI dashboards.</li>
+            <li>Self-learning: 6G, Open RAN, and cloud-native network functions.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="section-title"><span>Education</span></h2>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Bachelor of Engineering</div>
+                <div class="company">LNCT Indore · RGPV Bhopal</div>
+              </div>
+              <div class="meta">2008</div>
+            </div>
+            <div class="timeline-body">
+              <div>Major: Electronics and Communication</div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <div>Last updated: Mar 2026</div>
+      <div>Hosted with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></div>
+    </footer>
+  </div>
+</body>
+</html>
