@@ -17,7 +17,9 @@
       --chip-bg: #111827;
       --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: var(--font-main);
       background: radial-gradient(circle at top, #1f2937 0, var(--bg) 45%, var(--bg-alt) 100%);
@@ -25,6 +27,7 @@
       line-height: 1.6;
       padding: 32px 16px;
     }
+
     .page {
       max-width: 1100px;
       margin: 0 auto;
@@ -37,6 +40,7 @@
       overflow: hidden;
       backdrop-filter: blur(10px);
     }
+
     header {
       display: flex;
       flex-wrap: wrap;
@@ -45,10 +49,12 @@
       border-bottom: 1px solid rgba(148,163,184,0.25);
       background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 55%);
     }
+
     @media (max-width: 720px) {
       header { padding: 22px 18px 18px; }
       .profile-main { flex-direction: column; align-items: flex-start; }
     }
+
     .profile-main {
       display: flex;
       gap: 24px;
@@ -56,6 +62,7 @@
       flex: 2.2;
       min-width: 260px;
     }
+
     .avatar-wrap {
       position: relative;
       width: 120px;
@@ -71,12 +78,14 @@
         0 16px 48px rgba(15,23,42,0.95),
         0 0 0 1px rgba(15,23,42,0.9);
     }
+
     .avatar-wrap img {
       width: 116px;
       height: 116px;
       object-fit: cover;
       border-radius: 32px;
     }
+
     .avatar-ring {
       position: absolute;
       inset: 0;
@@ -84,22 +93,26 @@
       border: 2px solid rgba(56,189,248,0.3);
       pointer-events: none;
     }
+
     .profile-text h1 {
       font-size: 1.8rem;
       letter-spacing: 0.03em;
       margin-bottom: 4px;
     }
+
     .headline {
       font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 8px;
     }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 4px;
     }
+
     .chip {
       font-size: 0.72rem;
       padding: 3px 8px;
@@ -108,11 +121,13 @@
       border: 1px solid rgba(148,163,184,0.35);
       color: var(--text-muted);
     }
+
     .chip-accent {
       border-color: rgba(56,189,248,0.7);
       background: var(--accent-soft);
       color: var(--accent);
     }
+
     .contact-block {
       flex: 1;
       min-width: 220px;
@@ -123,11 +138,13 @@
       color: var(--text-muted);
       justify-content: center;
     }
+
     .contact-row {
       display: flex;
       align-items: center;
       gap: 8px;
     }
+
     .contact-label {
       width: 70px;
       color: #64748b;
@@ -135,27 +152,33 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
+
     .contact-value a {
       color: var(--text-main);
       text-decoration: none;
     }
+
     .contact-value a:hover {
       color: var(--accent);
       text-decoration: underline;
     }
+
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
       gap: 24px;
       padding: 22px 28px 26px;
     }
+
     @media (max-width: 860px) {
       main {
         grid-template-columns: minmax(0,1fr);
         padding: 18px 18px 22px;
       }
     }
+
     section + section { margin-top: 18px; }
+
     .section-title {
       font-size: 0.95rem;
       text-transform: uppercase;
@@ -163,10 +186,12 @@
       color: #9ca3af;
       margin-bottom: 10px;
     }
+
     .section-title span {
       border-bottom: 1px solid rgba(148,163,184,0.35);
       padding-bottom: 3px;
     }
+
     .summary {
       font-size: 0.9rem;
       color: var(--text-muted);
@@ -175,12 +200,14 @@
       padding: 14px 16px 12px;
       border: 1px solid rgba(148,163,184,0.2);
     }
+
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 10px;
     }
+
     .pill {
       font-size: 0.75rem;
       padding: 3px 8px;
@@ -188,6 +215,7 @@
       border: 1px solid rgba(148,163,184,0.28);
       color: var(--text-muted);
     }
+
     .timeline-item {
       background: rgba(15,23,42,0.96);
       border-radius: 12px;
@@ -197,6 +225,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .timeline-item::before {
       content: "";
       position: absolute;
@@ -205,26 +234,31 @@
       opacity: 0.7;
       pointer-events: none;
     }
+
     .timeline-header {
       display: flex;
       justify-content: space-between;
       gap: 8px;
       align-items: baseline;
     }
+
     .role {
       font-size: 0.94rem;
       font-weight: 600;
     }
+
     .company {
       font-size: 0.85rem;
       color: var(--text-muted);
     }
+
     .meta {
       font-size: 0.76rem;
       color: #9ca3af;
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
+
     .timeline-body {
       margin-top: 6px;
       font-size: 0.86rem;
@@ -232,11 +266,14 @@
       position: relative;
       z-index: 1;
     }
+
     .timeline-body ul {
       padding-left: 16px;
       margin-top: 4px;
     }
+
     .timeline-body li { margin-bottom: 2px; }
+
     .skill-group {
       background: rgba(15,23,42,0.96);
       border-radius: 12px;
@@ -245,6 +282,7 @@
       margin-bottom: 8px;
       font-size: 0.86rem;
     }
+
     .skill-group-title {
       font-size: 0.8rem;
       color: #9ca3af;
@@ -252,11 +290,13 @@
       letter-spacing: 0.14em;
       margin-bottom: 6px;
     }
+
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
     }
+
     .skill-tag {
       font-size: 0.76rem;
       padding: 3px 8px;
@@ -265,11 +305,13 @@
       border: 1px solid rgba(148,163,184,0.45);
       color: var(--text-main);
     }
+
     .cert-grid {
       display: grid;
       grid-template-columns: minmax(0,1fr);
       gap: 8px;
     }
+
     .cert-card {
       display: flex;
       gap: 10px;
@@ -280,6 +322,7 @@
       padding: 8px 9px;
       font-size: 0.84rem;
     }
+
     .cert-logo {
       width: 36px;
       height: 36px;
@@ -292,33 +335,40 @@
       overflow: hidden;
       border: 1px solid rgba(148,163,184,0.55);
     }
+
     .cert-logo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .cert-info-title {
       font-weight: 600;
       margin-bottom: 1px;
     }
+
     .cert-provider {
       font-size: 0.76rem;
       color: #9ca3af;
     }
+
     .cert-meta {
       font-size: 0.76rem;
       color: #6b7280;
       margin-top: 2px;
     }
+
     .learning-list {
       margin-top: 6px;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
+
     .learning-list li {
       margin-left: 16px;
       margin-bottom: 2px;
     }
+
     .achievements-list {
       font-size: 0.86rem;
       color: var(--text-muted);
@@ -327,10 +377,13 @@
       border: 1px solid rgba(55,65,81,0.8);
       padding: 10px 12px 8px;
     }
+
     .achievements-list ul {
       padding-left: 16px;
     }
+
     .achievements-list li { margin-bottom: 3px; }
+
     footer {
       padding: 10px 24px 16px;
       border-top: 1px solid rgba(148,163,184,0.25);
@@ -341,10 +394,12 @@
       gap: 8px;
       flex-wrap: wrap;
     }
+
     footer a {
       color: var(--accent);
       text-decoration: none;
     }
+
     footer a:hover { text-decoration: underline; }
   </style>
 </head>
@@ -353,14 +408,13 @@
     <header>
       <div class="profile-main">
         <div class="avatar-wrap">
-          <!-- Replace with your photo: put the image file in /images and update the path -->
           <img src="images/profile.jpg" alt="Nilesh Jain" />
           <div class="avatar-ring"></div>
         </div>
         <div class="profile-text">
           <h1>Nilesh Jain</h1>
           <div class="headline">
-            Radio Network Optimizer · RF Data Analyst · AI/ML Practitioner (Pursuing)
+            Radio Network Optimizer · RF Data Analyst · AI/ML Practitioner
           </div>
           <div class="chips">
             <span class="chip chip-accent">5G / LTE / VoLTE / WCDMA / GSM</span>
@@ -369,6 +423,7 @@
           </div>
         </div>
       </div>
+
       <div class="contact-block">
         <div class="contact-row">
           <span class="contact-label">Location</span>
@@ -387,15 +442,15 @@
         <div class="contact-row">
           <span class="contact-label">GitHub</span>
           <span class="contact-value">
-            <a href="https://github.com/jain.nilesh206-coder" target="_blank">
-              github.com/jain.nilesh206-coder
+            <a href="https://github.com/jainnilesh206-coder" target="_blank" rel="noopener noreferrer">
+              github.com/jainnilesh206-coder
             </a>
           </span>
         </div>
         <div class="contact-row">
           <span class="contact-label">LinkedIn</span>
           <span class="contact-value">
-            <a href="https://www.linkedin.com/in/nilesh-jain-79263597" target="_blank">
+            <a href="https://www.linkedin.com/in/nilesh-jain-79263597" target="_blank" rel="noopener noreferrer">
               linkedin.com/in/nilesh-jain-79263597
             </a>
           </span>
@@ -404,7 +459,6 @@
     </header>
 
     <main>
-      <!-- LEFT COLUMN: Summary + Experience -->
       <div>
         <section>
           <h2 class="section-title"><span>Profile Summary</span></h2>
@@ -424,7 +478,6 @@
         <section>
           <h2 class="section-title"><span>Professional Experience</span></h2>
 
-          <!-- Latest Role: SME – 5G -->
           <article class="timeline-item">
             <div class="timeline-header">
               <div>
@@ -447,7 +500,6 @@
             </div>
           </article>
 
-          <!-- Role: Manager – Network Operations and Support -->
           <article class="timeline-item">
             <div class="timeline-header">
               <div>
@@ -469,7 +521,6 @@
             </div>
           </article>
 
-          <!-- Role: Senior Engineer – RF Optimization -->
           <article class="timeline-item">
             <div class="timeline-header">
               <div>
@@ -486,12 +537,11 @@
                 <li>Prepared KPI exclusions and handled discussions with customers for closure.</li>
                 <li>Optimized VoLTE KPIs and features including LMS, IFHO, IFLB, CSFB, SRVCC, IRAT, latency, and packet loss at parameter level.</li>
                 <li>Engaged with customers for technical discussions on RF performance and optimization.</li>
-                <li>Developed KPI automation logic for Auto RCA tools and leveraged Power BI/Excel for analytics.</li>
+                <li>Developed KPI automation logic for Auto RCA tools and leveraged Power BI / Excel for analytics.</li>
               </ul>
             </div>
           </article>
 
-          <!-- Earlier long-term role: CTEL -->
           <article class="timeline-item">
             <div class="timeline-header">
               <div>
@@ -515,7 +565,6 @@
             </div>
           </article>
 
-          <!-- Earlier RF Engineer roles (compressed) -->
           <article class="timeline-item">
             <div class="timeline-header">
               <div>
@@ -548,9 +597,34 @@
             </ul>
           </div>
         </section>
+
+        <section>
+          <h2 class="section-title"><span>Projects</span></h2>
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="role">Data Science Project Handled</div>
+                <div class="company">Data Science Project</div>
+              </div>
+              <div class="meta">Python · EDA · ML</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Performed end-to-end marketing campaign analysis to derive customer behavior insights and campaign response patterns.</li>
+                <li>Applied data cleaning, exploratory data analysis, visualization, and feature-level interpretation for business understanding.</li>
+                <li>Studied customer segmentation, purchasing behavior, and campaign effectiveness to support data-driven decision-making.</li>
+                <li>
+                  GitHub:
+                  <a href="https://github.com/jainnilesh206-coder/Data-Science-Project_Marketing-Campaign-Analysis.git" target="_blank" rel="noopener noreferrer">
+                    Data-Science-Project_Marketing-Campaign-Analysis
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </section>
       </div>
 
-      <!-- RIGHT COLUMN: Skills + Certifications + Learning + Education -->
       <aside>
         <section>
           <h2 class="section-title"><span>Skills</span></h2>
@@ -586,7 +660,7 @@
               <span class="skill-tag">PT4 Tool</span>
               <span class="skill-tag">MS Office</span>
               <span class="skill-tag">Power BI</span>
-              <span class="skill-tag">Python (elementary)</span>
+              <span class="skill-tag">Python for analytics</span>
             </div>
           </div>
 
@@ -604,7 +678,7 @@
         <section>
           <h2 class="section-title"><span>Certifications & Learning</span></h2>
           <div class="cert-grid">
-            <!-- AI/ML Agentic AI (IIT Delhi) -->
+
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aiml.png" alt="AI/ML Agentic AI Certification" />
@@ -616,19 +690,17 @@
               </div>
             </div>
 
-            <!-- Cloud Architect -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-cloud.png" alt="Cloud Architect Master Programme" />
               </div>
               <div>
-                <div class="cert-info-title">Cloud Architect  Master Programme</div>
-                <div class="cert-provider">[SimpliLearn]</div>
+                <div class="cert-info-title">Cloud Architect Master Programme</div>
+                <div class="cert-provider">SimpliLearn</div>
                 <div class="cert-meta">Completed · Cloud architecture, services, and deployments.</div>
               </div>
             </div>
 
-            <!-- VoLTE LTE Training -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-volte.png" alt="VoLTE LTE Training" />
@@ -640,7 +712,17 @@
               </div>
             </div>
 
-            <!-- Developing Machine Learning Solutions (AWS) -->
+            <div class="cert-card">
+              <div class="cert-logo">
+                <img src="images/cert-applied-ds-python.png" alt="Applied Data Science with Python" />
+              </div>
+              <div>
+                <div class="cert-info-title">Applied Data Science with Python</div>
+                <div class="cert-provider">IHFC (IIT Delhi)</div>
+                <div class="cert-meta">Applied Python-based data science covering practical analytics and foundational ML concepts.</div>
+              </div>
+            </div>
+
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aws-devml.png" alt="Developing Machine Learning Solutions (AWS)" />
@@ -648,11 +730,10 @@
               <div>
                 <div class="cert-info-title">Developing Machine Learning Solutions</div>
                 <div class="cert-provider">AWS</div>
-                <div class="cert-meta">End-to-end ML lifecycle on AWS: data prep, training, deployment.</div>
+                <div class="cert-meta">End-to-end ML lifecycle on AWS: data preparation, model training, and deployment.</div>
               </div>
             </div>
 
-            <!-- Essentials of Prompt Engineering (AWS) -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aws-prompt.png" alt="Essentials of Prompt Engineering (AWS)" />
@@ -664,7 +745,6 @@
               </div>
             </div>
 
-            <!-- Fundamentals of Machine Learning and AI (AWS) -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aws-mlai.png" alt="Fundamentals of Machine Learning and AI (AWS)" />
@@ -676,7 +756,6 @@
               </div>
             </div>
 
-            <!-- Generative AI Basics (Outskill) -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-outskill-genai.png" alt="Generative AI Basics (Outskill)" />
@@ -688,7 +767,6 @@
               </div>
             </div>
 
-            <!-- Optimizing Foundation Models (AWS) -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aws-optfm.png" alt="Optimizing Foundation Models (AWS)" />
@@ -700,7 +778,6 @@
               </div>
             </div>
 
-            <!-- AWS AI Practitioner -->
             <div class="cert-card">
               <div class="cert-logo">
                 <img src="images/cert-aws-aipract.png" alt="AWS AI Practitioner" />
@@ -711,6 +788,7 @@
                 <div class="cert-meta">Overview of AWS AI/ML services and practical solution patterns.</div>
               </div>
             </div>
+
           </div>
 
           <ul class="learning-list">
@@ -739,8 +817,8 @@
     </main>
 
     <footer>
-      <div>Last updated: Mar 2026</div>
-      <div>Hosted with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></div>
+      <div>Last updated: Apr 2026</div>
+      <div>Hosted with <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></div>
     </footer>
   </div>
 </body>
